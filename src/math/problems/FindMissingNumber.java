@@ -14,4 +14,14 @@ public class FindMissingNumber {
          int [] array = new int[]{10, 2, 1, 4, 5, 3, 7, 8, 6};
 
     }
+    public static int missingNum(int [] array) {
+    	int length=array.length+1;
+    	int sum=(length*(length+1))/2;
+    	for(int i=0;i<array.length;i++)
+    	{
+    		sum-=array[i];
+    	}
+    	return sum;
+    	
+    }
 }

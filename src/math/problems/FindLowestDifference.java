@@ -1,5 +1,7 @@
 package math.problems;
 
+import java.util.Arrays;
+
 public class FindLowestDifference {
     public static void main(String[] args) {
         /*
@@ -13,6 +15,23 @@ public class FindLowestDifference {
 
 
 
+    }
+    public static int lowestDiff(int [] array1, int [] array2) {
+    Arrays.sort(array1);
+    Arrays.sort(array2);
+    int i=0;
+    int j=0;
+    int lowDiff=Integer.MAX_VALUE;
+    while(i<array1.length && j<array2.length) {
+    	int difference=Math.abs(array1[i]-array2[j]);
+    	if(difference<lowDiff)
+    		lowDiff=difference;
+    	if(array1[i]<array2[j])
+    		i++;
+    	else
+    		j++;
+    }
+    return lowDiff;
     }
 
 }

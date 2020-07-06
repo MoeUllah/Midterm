@@ -1,5 +1,8 @@
 package math.problems;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PrimeNumber {
 
 	public static void main(String[] args) {
@@ -12,7 +15,29 @@ public class PrimeNumber {
 		 * Use any databases[MongoDB, Oracle, MySql] to store data and retrieve data.
 		 *
 		 */
-
+		isPrime(100);
+	}
+	public static void isPrime(int num) {
+		boolean[] primes=new boolean[num+1];
+		for(int i=0;i<primes.length;i++) {
+			primes[i]=true;
+		}
+		for(int k=2;k<=num/k;k++) {
+			if(primes[k]) {
+				for(int i=k;i<=num/k;i++) {
+				primes[k*i]=false;
+				}
+			}
+		}
+		int count=0;
+		for(int i=2;i<primes.length;i++) {
+			if(primes[i]) {
+				System.out.print(i + " ");
+				count++;
+				
+			}
+		}
+		System.out.println("\n"+count + " prime numbers.");
 	}
 
 }

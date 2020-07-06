@@ -7,9 +7,12 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class ProcessStudentInfo {
 
@@ -59,21 +62,23 @@ public class ProcessStudentInfo {
 				seleniumStudents = xmlReader.parseData(tag, pathSelenium);
 
 				//Parse Data using parseData method and then store data into Qtp ArrayList.
-
+				qtpStudents=xmlReader.parseData(tag, pathQtp);
 				
 				//add Selenium ArrayList data into map.
-
+				list.put(pathSelenium, seleniumStudents);
 				//add Qtp ArrayList data into map.
-		
+				list.put(pathQtp, qtpStudents);
 		      	
 				//Retrieve map data and display output.
-
+				Set<Entry<String, List<Student>>> entrySet=list.entrySet();
+				for(Entry<String, List<Student>> entry:entrySet)
+					System.out.println(entry.getKey() + " | " + entry.getValue());
 
 
 				//Store Qtp data into Qtp table in Database
 				connectToMongoDB.insertIntoMongoDB(seleniumStudents,"qtp");
 				//connectToSqlDB.insertDataFromArrayListToMySql(seleniumStudents, "qtp","studentList");
-
+				
 				//Store Selenium data into Selenium table in Database
 
 				//Retrieve Qtp students from Database

@@ -30,5 +30,17 @@ public class LowestNumber {
 			System.out.println(st);
 		}
 	}
+		
+	public static int findMin(int [] array) {
+		int small=array[0];
+		
+		for(int i=0;i<array.length;i++) {
+			if(array[i]<small)
+				small=array[i];
+		}
+		return small;
+	
+		
+	}
 
 }
